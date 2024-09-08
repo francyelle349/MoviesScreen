@@ -1,16 +1,19 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+
+import 'package:moviescreen1/features/Movie/bloc/movie_bloc.dart';
+import 'package:moviescreen1/features/favorite/bloc/favorite_bloc.dart';
 import 'package:moviescreen1/features/model/MovieModel.dart';
-
-
 
 // modelo de um bloco esepcifico, neste exemplo é o widget de somente um bloco de filme especifico
 class MovieItemWidget extends StatelessWidget {
   final MovieModel movieModel;
+  final MovieBloc movieBloc;
 
   const MovieItemWidget({
     Key? key,
     required this.movieModel,
+    required this.movieBloc,
   }) : super(key: key);
 
   @override
@@ -44,7 +47,7 @@ class MovieItemWidget extends StatelessWidget {
             children: [
                Text(movieModel.time, style: TextStyle(),),
               Row(
-                children: [Icon(Icons.favorite)],
+                children: [IconButton(onPressed: (){movieBloc.add(HomeMoviesFavoriteButtonClickedEvent(clickedMovie: movieModel));} , icon: Icon(Icons.favorite))],
               )
             ],
            )

@@ -5,7 +5,9 @@ sealed class FavoriteEvent {}
 
 // initial event
 
-class FavoriteInitialEvent extends FavoriteEvent{}
+class FavoriteInitialEvent extends FavoriteEvent{
+  
+}
 
 // remove Favorite from favorite 
 

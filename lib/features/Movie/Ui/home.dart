@@ -52,7 +52,7 @@ class _MoviesHomeState extends State<MoviesHome> {
 
           // aqui onde vai ser mostrado todos os elementos da lista, utilizando o modelo pronto do movie_tile_widget, que está utilizando o model que tem todas as informações.
           body: ListView.builder(itemCount:SuccessState.movies.length, itemBuilder: (context,index){
-           return MovieItemWidget(movieModel: SuccessState.movies[index]);
+           return MovieItemWidget(movieModel: SuccessState.movies[index], movieBloc: movieBloc,);
 
           }));
          

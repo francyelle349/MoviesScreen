@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 import 'package:moviescreen1/data/data.dart';
+import 'package:moviescreen1/data/listFavorite.dart';
 import 'package:moviescreen1/features/model/MovieModel.dart';
 
 
@@ -15,6 +16,7 @@ class MovieBloc extends Bloc<MovieEvent, MovieState> {
   MovieBloc() : super(MovieInitial()) {
     on<HomeInitialEvent>(homeInitialEvent);
     on<HomeFavoriteButtonNavigateEvent>(homeFavoriteButtonNavigateEvent);
+    on<HomeMoviesFavoriteButtonClickedEvent>(homeMoviesFavoriteButtonClickedEvent);
   }
 
   FutureOr<void> homeInitialEvent(HomeInitialEvent event, Emitter<MovieState> emit) async {
@@ -25,6 +27,14 @@ class MovieBloc extends Bloc<MovieEvent, MovieState> {
   }
 
   FutureOr<void> homeFavoriteButtonNavigateEvent(HomeFavoriteButtonNavigateEvent event, Emitter<MovieState> emit) {
+   
     emit(homeNavigateToFavoritePageActionState());
+  }
+
+  FutureOr<void> homeMoviesFavoriteButtonClickedEvent(HomeMoviesFavoriteButtonClickedEvent event, Emitter<MovieState> emit) {
+    print("favorite Clicked");
+    FavoriteMovies.add(event.clickedMovie);
+    emit(HomeMovieItemFavoritedActionState());
+   
   }
 }
