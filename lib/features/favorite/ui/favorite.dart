@@ -37,7 +37,7 @@ class _FavoritePageState extends State<FavoritePage> {
             return Scaffold(
               appBar: AppBar(title: Text('Favorite Items'),),
               body: ListView.builder(itemCount:successState.favoriteList.length, itemBuilder:  (context,index){
-                return FavoriteTileWidget(movieModel: successState.favoriteList[index]);
+                return FavoriteTileWidget(movieModel: successState.favoriteList[index], favoriteBloc: favoriteBloc,);
               }),
               
             );

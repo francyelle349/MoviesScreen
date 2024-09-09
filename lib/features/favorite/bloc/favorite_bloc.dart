@@ -21,5 +21,7 @@ class FavoriteBloc extends Bloc<FavoriteEvent, FavoriteState> {
   }
 
   FutureOr<void> removeFavoriteInitialEvent(RemoveFavoriteInitialEvent event, Emitter<FavoriteState> emit) {
+  FavoriteMovies.remove(event.movieModel);
+  emit(FavoriteSucceState(favoriteList: FavoriteMovies));
   }
 }

@@ -12,6 +12,9 @@ class FavoriteInitialEvent extends FavoriteEvent{
 // remove Favorite from favorite 
 
 class RemoveFavoriteInitialEvent extends FavoriteEvent{
+  final MovieModel movieModel;
+
+  RemoveFavoriteInitialEvent({required this.movieModel});
 
   
 }

@@ -2,16 +2,20 @@
 
 
 import 'package:flutter/material.dart';
-import 'package:moviescreen1/features/model/MovieModel.dart';
 
+import 'package:moviescreen1/features/Movie/bloc/movie_bloc.dart';
+import 'package:moviescreen1/features/favorite/bloc/favorite_bloc.dart';
+import 'package:moviescreen1/features/model/MovieModel.dart';
 
 // Bloco para a página de favoritos
 
 class FavoriteTileWidget extends StatelessWidget {
   final MovieModel movieModel;
+  final FavoriteBloc favoriteBloc;
   const FavoriteTileWidget({
     Key? key,
     required this.movieModel,
+    required this.favoriteBloc,
   }) : super(key: key);
 
   @override
@@ -45,7 +49,7 @@ class FavoriteTileWidget extends StatelessWidget {
             children: [
                Text(movieModel.time, style: TextStyle(),),
               Row(
-                children: [Icon(Icons.favorite)],
+                children: [IconButton(onPressed: (){ favoriteBloc.add(RemoveFavoriteInitialEvent(movieModel: movieModel));}, icon: const Icon(Icons.delete))],
               )
             ],
            )
